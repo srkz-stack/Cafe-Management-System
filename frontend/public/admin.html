@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cafe Management System - Admin Dashboard">
+    <title>Café Noir — Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo-icon">☕</span>
+            <h1>Café Noir</h1>
+            <span class="nav-badge">Admin</span>
+        </div>
+        <div class="nav-actions">
+            <span id="navUser" class="nav-user"></span>
+            <button id="logoutBtn" class="btn btn-outline btn-sm">Logout</button>
+        </div>
+    </nav>
+    <main class="dashboard">
+        <section class="stats-bar">
+            <div class="stat-card">
+                <span class="stat-value" id="totalItems">0</span>
+                <span class="stat-label">Menu Items</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="totalCategories">6</span>
+                <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="availableItems">0</span>
+                <span class="stat-label">Available</span>
+            </div>
+        </section>
+        <section class="action-bar">
+            <h2>Menu Management</h2>
+            <div class="action-controls">
+                <select id="categoryFilter" class="select-input">
+                    <option value="">All Categories</option>
+                    <option value="COFFEE">☕ Coffee</option>
+                    <option value="TEA">🍵 Tea</option>
+                    <option value="PASTRY">🥐 Pastry</option>
+                    <option value="SANDWICH">🥪 Sandwich</option>
+                    <option value="DESSERT">🍰 Dessert</option>
+                    <option value="BEVERAGE">🥤 Beverage</option>
+                </select>
+                <button id="addItemBtn" class="btn btn-primary">+ Add Item</button>
+            </div>
+        </section>
+        <section class="table-container">
+            <table class="data-table" id="menuTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="menuTableBody">
+                </tbody>
+            </table>
+            <div id="emptyState" class="empty-state" style="display:none;">
+                <span>☕</span>
+                <p>No menu items found</p>
+            </div>
+        </section>
+    </main>
+    <div id="menuModal" class="modal-overlay" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add Menu Item</h3>
+                <button id="modalClose" class="modal-close">&times;</button>
+            </div>
+            <form id="menuForm" class="modal-form">
+                <input type="hidden" id="editItemId">
+                <div class="form-group">
+                    <label for="itemName">Name</label>
+                    <input type="text" id="itemName" required placeholder="e.g. Espresso">
+                </div>
+                <div class="form-group">
+                    <label for="itemDescription">Description</label>
+                    <textarea id="itemDescription" rows="2" placeholder="Short description"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="itemPrice">Price ($)</label>
+                        <input type="number" id="itemPrice" step="0.01" min="0.01" required placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemCategory">Category</label>
+                        <select id="itemCategory" required>
+                            <option value="">Select...</option>
+                            <option value="COFFEE">Coffee</option>
+                            <option value="TEA">Tea</option>
+                            <option value="PASTRY">Pastry</option>
+                            <option value="SANDWICH">Sandwich</option>
+                            <option value="DESSERT">Dessert</option>
+                            <option value="BEVERAGE">Beverage</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    <label>
+                        <input type="checkbox" id="itemAvailable" checked>
+                        Available for ordering
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="modalCancel" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="toast" class="toast" style="display:none;"></div>
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

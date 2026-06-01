@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cafe Management System - Staff Dashboard">
+    <title>Café Noir — Staff Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo-icon">☕</span>
+            <h1>Café Noir</h1>
+            <span class="nav-badge staff-badge">Staff</span>
+        </div>
+        <div class="nav-actions">
+            <span id="navUser" class="nav-user"></span>
+            <button id="logoutBtn" class="btn btn-outline btn-sm">Logout</button>
+        </div>
+    </nav>
+    <main class="dashboard staff-dashboard">
+        <div class="staff-layout">
+            <section class="menu-panel">
+                <div class="panel-header">
+                    <h2>Menu</h2>
+                    <select id="menuCategoryFilter" class="select-input select-sm">
+                        <option value="">All</option>
+                        <option value="COFFEE">☕ Coffee</option>
+                        <option value="TEA">🍵 Tea</option>
+                        <option value="PASTRY">🥐 Pastry</option>
+                        <option value="SANDWICH">🥪 Sandwich</option>
+                        <option value="DESSERT">🍰 Dessert</option>
+                        <option value="BEVERAGE">🥤 Beverage</option>
+                    </select>
+                </div>
+                <div id="menuGrid" class="menu-grid">
+                </div>
+            </section>
+            <section class="order-panel">
+                <div class="panel-header">
+                    <h2>Current Order</h2>
+                    <button id="clearOrderBtn" class="btn btn-outline btn-sm">Clear</button>
+                </div>
+                <div id="orderItems" class="order-items">
+                    <div id="orderEmpty" class="order-empty">
+                        <span>🛒</span>
+                        <p>Tap menu items to add</p>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <div class="pricing-toggle">
+                        <label>Pricing:</label>
+                        <select id="pricingType" class="select-input select-sm">
+                            <option value="REGULAR">Regular</option>
+                            <option value="HAPPY_HOUR">🎉 Happy Hour (-20%)</option>
+                        </select>
+                    </div>
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <span id="orderTotal" class="total-amount">$0.00</span>
+                    </div>
+                    <button id="submitOrderBtn" class="btn btn-primary btn-full" disabled>
+                        Submit Order
+                    </button>
+                </div>
+            </section>
+        </div>
+        <section class="orders-section">
+            <div class="section-header">
+                <h2>Active Orders</h2>
+                <div class="section-controls">
+                    <select id="orderStatusFilter" class="select-input select-sm">
+                        <option value="">All Orders</option>
+                        <option value="PENDING">⏳ Pending</option>
+                        <option value="PREPARING">🔥 Preparing</option>
+                        <option value="READY">✅ Ready</option>
+                        <option value="DELIVERED">📦 Delivered</option>
+                        <option value="CANCELLED">❌ Cancelled</option>
+                    </select>
+                    <button id="refreshOrdersBtn" class="btn btn-outline btn-sm">↻ Refresh</button>
+                </div>
+            </div>
+            <div id="ordersGrid" class="orders-grid">
+            </div>
+            <div id="ordersEmpty" class="empty-state" style="display:none;">
+                <span>📋</span>
+                <p>No orders yet</p>
+            </div>
+        </section>
+    </main>
+    <div id="toast" class="toast" style="display:none;"></div>
+    <script src="js/api.js"></script>
+    <script src="js/staff.js"></script>
+</body>
+</html>

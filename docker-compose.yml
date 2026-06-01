@@ -1,0 +1,37 @@
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cafe-backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - cafe-data:/app/data
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlite:/app/data/cafe.db
+    networks:
+      - cafe-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cafe-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - cafe-network
+    restart: unless-stopped
+
+volumes:
+  cafe-data:
+    driver: local
+
+networks:
+  cafe-network:
+    driver: bridge
