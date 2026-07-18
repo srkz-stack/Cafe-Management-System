@@ -128,16 +128,3 @@ For an in-depth dive into the architecture, design decisions, and code structure
 7. [`07_Interview_Cheat_Sheet.md`](docs/07_Interview_Cheat_Sheet.md)
 
 ---
-
-## 🧪 Testing
-
-The repository includes a comprehensive End-to-End (E2E) testing script written in Python (`e2e_test.py`) that tests the entire REST API flow, and a security script (`security_test.py`) to verify Role-Based Access Control (RBAC) integrity.
-
-To run the tests (ensure the backend is running):
-```bash
-python3 e2e_test.py
-python3 security_test.py
-```
-
----
-*Built with ❤️ focusing on clean code and robust software design.*
