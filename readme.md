@@ -69,7 +69,6 @@ The backend strictly follows **Onion Architecture** (Clean Architecture). The co
 **DevOps & Testing:**
 - Docker & Docker Compose
 - Maven
-- Python (E2E Automated API Testing)
 
 ---
 
