@@ -102,18 +102,6 @@ npm install
 node server.js
 ```
 
----
-
-## 🔑 Default Credentials
-
-The database is seeded with default users upon initialization:
-
-| Role  | Username | Password   |
-|-------|----------|------------|
-| Admin | `admin`  | `admin123` |
-| Staff | `staff`  | `staff123` |
-
----
 
 ## 📚 Extensive Documentation
 
